@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +32,11 @@ Route::middleware('auth')
             Route::resource('/posts', 'PostController');
         });
 
+
+Route::get('{any?}',function(){
+    return view('guest.home');
+})->where('any','.*');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
