@@ -1,22 +1,32 @@
 <template>
     <section>
         <h1>Lista Vue</h1>
-        <ul>
+       <!--  <ul>
             <li  v-for="post in posts" :key="post.id">
                 {{post.post_title}} with ID = {{post.id}}
             </li>
-        </ul>
+
+
+        </ul> -->
+        <PostComponent
+        v-for="post in posts" :key="post.id"
+        :post= 'post'
+        />
     </section>
 </template>
 
 <script>
 import axios from 'axios';
+import PostComponent from './PostComponent.vue'
 
 export default {
     data:function(){
         return{
             posts:[],
         }
+    },
+    components:{
+        PostComponent
     },
     methods: {
         getPosts(){
